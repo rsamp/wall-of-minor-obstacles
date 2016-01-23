@@ -8,20 +8,25 @@
   <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'></head>
 <body>
 
-<% if current_user %>
-  <%= current_user.username %>
-  <%= button_to("Sign Out", session_url, method: :delete) %>
-<% else %>
-  <%= button_to("Sign In", new_session_url, method: :get) %>
-<% end %>
+<div class="content">
+  <span class="profile-buttons">
+    <% if current_user %>
+      <%= current_user.username %>
+      <%= button_to("Sign Out", session_url, method: :delete) %>
+      <%= button_to("Edit Profile", edit_user_url(current_user), method: :get) %>
+    <% else %>
+      <%= button_to("Sign In", new_session_url, method: :get) %>
+    <% end %>
+  </span>
 
-<% if flash[:errors] %>
-  <% flash[:errors].each do |error| %>
-    <%= error %>
+  <% if flash[:errors] %>
+    <% flash[:errors].each do |error| %>
+      <%= error %>
+    <% end %>
   <% end %>
-<% end %>
 
-<%= yield %>
+  <%= yield %>
+</div>
 
 </body>
 </html>

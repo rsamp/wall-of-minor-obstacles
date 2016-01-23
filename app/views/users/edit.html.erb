@@ -1,0 +1,23 @@
+<form class="input-group user-auth" action=<%= user_url(@user) %> method="post">
+  <h1>Edit Profile</h1>
+
+  <% if flash[:errors] %>
+    <p class="errors">
+      <% flash[:errors].each do |error| %>
+        <%= error %> <br>
+      <% end %>
+    </p>
+  <% end %>
+
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="patch">
+  <label for="">
+    Display Name:
+    <input class="form-control" type="text" name=user[display_name] value="<%= @user.display_name %>" id="display_name" placeholder="Display Name">
+  </label>
+  <br>
+  <br>
+  <input class="form-control" type="submit" name="name" value="Submit Changes">
+  <%= link_to "cancel", list_index_url %>
+
+</form>

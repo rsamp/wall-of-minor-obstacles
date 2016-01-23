@@ -1,13 +1,13 @@
 <h1>Wall of Minor Obstacles</h1>
 
 <h2>&lt;ul&gt;</h2>
-<% Person.ordered_list.each do |person| %>
+<% User.ordered_list.each do |user| %>
   <h2 class="list-item">
     &lt;li&gt;
-    <span class="name"><%= person.name %>:</span>
-    <% count = person.rejection_count %>
-    <% if count != 0 %>
-      <span class="remove"><%= button_to "-", person_remove_r_url(person.id), method: :put %></span>
+    <span class="name"><%= user.display_name == "" || !user.display_name ? user.username : user.display_name %>:</span>
+    <% count = user.rejections %>
+    <% if count != 0  && user == current_user%>
+      <span class="remove"><%= button_to "-", user_remove_r_url(user.id), method: :put %></span>
     <% end %>
     <% while count >= 5  %>
       <%= image_tag "5tally.png" %>
@@ -20,19 +20,11 @@
       <% when 1 then "1tally.png" %>
     <% end %>
     <%= image_tag tally_img %>
-    <span class="add"><%= button_to "+", person_add_r_url(person.id), method: :put %></span>
+    <% if user == current_user %>
+      <span class="add"><%= button_to "+", user_add_r_url(user.id), method: :put %></span>
+    <% end %>
     &lt;/li&gt;
   </h2>
-<% end %>
-
-<% if current_user %>
-<form class="list-item" action=<%= people_url %> method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-
-  <input type="text" name=person[name] value="" placeholder="Name">
-  <input type="submit" name="name" value="Add to List">
-
-</form>
 <% end %>
 
 <h2>&lt;/ul&gt;</h2>

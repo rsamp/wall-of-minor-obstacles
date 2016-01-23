@@ -3,10 +3,12 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   root to: 'list#index'
 
-  resources :users, only: [:new, :create]
-  resources :people, only: [:create, :destroy, :update] do
+  resources :users do
     put :add_r, :remove_r
   end
+  # resources :people, only: [:create, :destroy, :update] do
+  #   put :add_r, :remove_r
+  # end
   resources :list, only: [:index]
   resource :session, only: [:new, :create, :destroy]
 
