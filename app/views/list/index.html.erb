@@ -7,7 +7,7 @@
     <span class="name"><%= user.display_name == "" || !user.display_name ? user.username : user.display_name %>:</span>
     <% count = user.rejections %>
     <% if count != 0  && user == current_user%>
-      <span class="remove"><%= button_to "-", user_remove_r_url(user.id), method: :put %></span>
+      <%= button_to "-", user_remove_r_url(user.id), method: :put, class: "add-remove" %>
     <% end %>
     <% while count >= 5  %>
       <%= image_tag "5tally.png" %>
@@ -21,7 +21,7 @@
     <% end %>
     <%= image_tag tally_img %>
     <% if user == current_user %>
-      <span class="add"><%= button_to "+", user_add_r_url(user.id), method: :put %></span>
+      <%= button_to "+", user_add_r_url(user.id), method: :put, class: "add-remove" %>
     <% end %>
     &lt;/li&gt;
   </h2>
