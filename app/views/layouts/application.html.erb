@@ -4,8 +4,22 @@
   <title>Wall of Minor Obstacles</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= csrf_meta_tags %>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 </head>
 <body>
+
+<% if current_user %>
+  <%= current_user.username %>
+  <%= button_to("Sign Out", session_url, method: :delete) %>
+<% else %>
+  <%= button_to("Sign In", new_session_url, method: :get) %>
+<% end %>
+
+<% if flash[:errors] %>
+  <% flash[:errors].each do |error| %>
+    <%= error %>
+  <% end %>
+<% end %>
 
 <%= yield %>
 

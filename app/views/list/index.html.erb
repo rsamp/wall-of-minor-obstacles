@@ -1,0 +1,25 @@
+<h1>Wall of Minor Obstacles</h1>
+
+<h2>&lt;ul&gt;</h2>
+<% Person.ordered_list.each do |person| %>
+  <h2>
+    &lt;li&gt;
+    <%= person.name %>:
+    <%= button_to "-", person_remove_rejection_url(person.id), method: :put %>
+    <%= person.rejection_count %>
+    <%= button_to "+", person_add_rejection_url(person.id), method: :put %>
+    &lt;/li&gt;
+  </h2>
+<% end %>
+
+<% if current_user %>
+<form class="" action=<%= people_url %> method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <input type="text" name=person[name] value="" placeholder="Name">
+  <input type="submit" name="name" value="submit">
+
+</form>
+<% end %>
+
+<h2>&lt;/ul&gt;</h2>

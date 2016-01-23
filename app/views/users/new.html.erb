@@ -1,0 +1,27 @@
+<form class="input-group user-auth" action=<%= users_url %> method="post">
+  <h1>Sign Up</h1>
+
+  <% if flash[:errors] %>
+    <p class="errors">
+      <% flash[:errors].each do |error| %>
+        <%= error %> <br>
+      <% end %>
+    </p>
+  <% end %>
+
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input class="form-control" type="text" name=user[username] value="" id="username" placeholder="Username">
+  <br>
+  <br>
+  <input class="form-control" type="password" name=user[password] value="" id="password" placeholder="Password">
+  <br>
+  <br>
+  <input class="form-control" type="password" name="user[password_confirmation]" id="confirm_password" value="" placeholder="Confirm Password">
+  <br>
+  <br>
+  <input class="form-control purple-button" type="submit" name="name" value="Sign Up">
+  <br>
+  <p>
+    <%= link_to "Already have an account? Sign in", new_session_url %>
+  </p>
+</form>
