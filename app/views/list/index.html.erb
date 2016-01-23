@@ -2,22 +2,35 @@
 
 <h2>&lt;ul&gt;</h2>
 <% Person.ordered_list.each do |person| %>
-  <h2>
+  <h2 class="list-item">
     &lt;li&gt;
-    <%= person.name %>:
-    <%= button_to "-", person_remove_rejection_url(person.id), method: :put %>
-    <%= person.rejection_count %>
-    <%= button_to "+", person_add_rejection_url(person.id), method: :put %>
+    <span class="name"><%= person.name %>:</span>
+    <% count = person.rejection_count %>
+    <% if count != 0 %>
+      <span class="remove"><%= button_to "-", person_remove_r_url(person.id), method: :put %></span>
+    <% end %>
+    <% while count >= 5  %>
+      <%= image_tag "5tally.png" %>
+      <% count -= 5 %>
+    <% end %>
+    <% tally_img = case count %>
+      <% when 4 then "4tally.png" %>
+      <% when 3 then "3tally.png" %>
+      <% when 2 then "2tally.png" %>
+      <% when 1 then "1tally.png" %>
+    <% end %>
+    <%= image_tag tally_img %>
+    <span class="add"><%= button_to "+", person_add_r_url(person.id), method: :put %></span>
     &lt;/li&gt;
   </h2>
 <% end %>
 
 <% if current_user %>
-<form class="" action=<%= people_url %> method="post">
+<form class="list-item" action=<%= people_url %> method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
   <input type="text" name=person[name] value="" placeholder="Name">
-  <input type="submit" name="name" value="submit">
+  <input type="submit" name="name" value="Add to List">
 
 </form>
 <% end %>

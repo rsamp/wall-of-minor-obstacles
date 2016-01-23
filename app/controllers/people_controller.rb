@@ -4,8 +4,8 @@ class PeopleController < ApplicationController
     if @person.save
       redirect_to list_index_url
     else
-      flash[:errors] = @person.errors.full_messages
-      redirect_to list_index_url
+      flash.now[:errors] = @person.errors.full_messages
+      # redirect_to list_index_url
     end
   end
 
@@ -29,13 +29,13 @@ class PeopleController < ApplicationController
     end
   end
 
-  def add_rejection
+  def add_r
     @person = Person.find(params[:person_id])
     @person.increment!(:rejection_count)
     redirect_to list_index_url
   end
 
-  def remove_rejection
+  def remove_r
     @person = Person.find(params[:person_id])
     @person.decrement!(:rejection_count)
     redirect_to list_index_url

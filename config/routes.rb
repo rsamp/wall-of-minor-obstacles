@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create]
   resources :people, only: [:create, :destroy, :update] do
-    put :add_rejection, :remove_rejection
+    put :add_r, :remove_r
   end
   resources :list, only: [:index]
   resource :session, only: [:new, :create, :destroy]
