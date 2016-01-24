@@ -13,7 +13,7 @@
       <%= button_to "-", user_remove_r_url(user.id), method: :put, class: "add-remove" %>
     <% end %>
     <% while count >= 5  %>
-      <%= image_tag "5tally.png" %>
+      <%= image_tag "5tally.png", class: "tally", style:"background-color: #{user.color}"%>
       <% count -= 5 %>
     <% end %>
     <% tally_img = case count %>
@@ -22,7 +22,7 @@
       <% when 2 then "2tally.png" %>
       <% when 1 then "1tally.png" %>
     <% end %>
-    <%= image_tag tally_img, class: "tally" %>
+    <%= image_tag tally_img, class: "tally", style:"background-color: #{user.color}" %>
     <% if user == current_user %>
       <%= button_to "+", user_add_r_url(user.id), method: :put, class: "add-remove" %>
     <% end %>
