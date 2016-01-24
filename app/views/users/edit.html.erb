@@ -1,6 +1,6 @@
 <form class="user-auth" action=<%= user_url(@user) %> method="post">
   <h1>
-    Edit Profile - 
+    Edit Profile -
     <%= link_to "Delete Account", user_url(@user), 'data-method' => :delete, 'data-confirm' => "Are you sure?", class: "delete"%>
   </h1>
   <% if flash[:errors] %>
@@ -21,7 +21,7 @@
   </h3>
   <h3>
     <label for="color">
-      Marker color:
+      Marker Color:
       <input class="input" type="color" name=user[color] value="<%= @user.color %>" id="color">
     </label>
   </h3>
