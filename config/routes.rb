@@ -6,9 +6,6 @@ Rails.application.routes.draw do
   resources :users do
     put :add_r, :remove_r
   end
-  # resources :people, only: [:create, :destroy, :update] do
-  #   put :add_r, :remove_r
-  # end
   resources :list, only: [:index]
   resource :session, only: [:new, :create, :destroy]
 

@@ -2,10 +2,13 @@
 
 <h2>&lt;ul&gt;</h2>
 <% User.ordered_list.each do |user| %>
-  <h2 class="list-item">
+  <h2 class="list-item" style="color:<%= user.color %>;">
     &lt;li&gt;
     <span class="name"><%= user.display_name == "" || !user.display_name ? user.username : user.display_name %>:</span>
     <% count = user.rejections %>
+    <% if count == 0 %>
+      0
+    <% end %>
     <% if count != 0  && user == current_user%>
       <%= button_to "-", user_remove_r_url(user.id), method: :put, class: "add-remove" %>
     <% end %>
@@ -19,7 +22,7 @@
       <% when 2 then "2tally.png" %>
       <% when 1 then "1tally.png" %>
     <% end %>
-    <%= image_tag tally_img %>
+    <%= image_tag tally_img, class: "tally" %>
     <% if user == current_user %>
       <%= button_to "+", user_add_r_url(user.id), method: :put, class: "add-remove" %>
     <% end %>

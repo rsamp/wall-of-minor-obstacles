@@ -16,9 +16,16 @@
 
 .profile-buttons {
   float: right;
+
+  h4 {
+    display: inline;
+  }
 }
 
- .content {
+input {
+  font-family: "Architects Daughter", cursive;
+}
+.content {
    width: 900px;
    margin: auto;
- }
+}

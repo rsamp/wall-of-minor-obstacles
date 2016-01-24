@@ -12,7 +12,8 @@ body{
 
 .name {
   width: 300px;
-  display: inline-block;
+  display: inline;
+  margin-right: 12px;
 }
 
 .button_to {
@@ -20,6 +21,16 @@ body{
 }
 
 .add-remove {
-  height: 40px;
-  font-size: 28px;
+  text-align: center;
+  background-color: white;
+  vertical-align: middle;
+  border: 2px solid black;
+  border-radius: 3px;
+  height: 28px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.tally{
+  vertical-align: middle;
 }

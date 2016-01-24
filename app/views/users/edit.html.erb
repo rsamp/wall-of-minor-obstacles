@@ -1,6 +1,5 @@
-<form class="input-group user-auth" action=<%= user_url(@user) %> method="post">
-  <h1>Edit Profile</h1>
-
+<h1>Edit Profile</h1>
+<form class="input-group" action=<%= user_url(@user) %> method="post">
   <% if flash[:errors] %>
     <p class="errors">
       <% flash[:errors].each do |error| %>
@@ -11,13 +10,20 @@
 
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <input type="hidden" name="_method" value="patch">
-  <label for="">
-    Display Name:
-    <input class="form-control" type="text" name=user[display_name] value="<%= @user.display_name %>" id="display_name" placeholder="Display Name">
-  </label>
-  <br>
-  <br>
+  <h3>
+    <label for="display_name">
+      Display Name:
+      <input class="form-control" type="text" name=user[display_name] value="<%= @user.display_name %>" id="display_name">
+    </label>
+  </h3>
+  <h3>
+    <label for="color">
+      Marker color:
+      <input class="form-control" type="color" name=user[color] value="<%= @user.color %>" id="color">
+    </label>
+  </h3>
   <input class="form-control" type="submit" name="name" value="Submit Changes">
   <%= link_to "cancel", list_index_url %>
-
+  <br>
 </form>
+<%= button_to "Delete Account", user_url(@user), method: :delete %>
