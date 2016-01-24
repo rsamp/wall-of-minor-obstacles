@@ -3,25 +3,25 @@
 <head>
   <title>Wall of Minor Obstacles</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'></head>
 <body>
 
-<div class="content">
-  <%= button_to("Home", root_url, method: :get) %>
-  <span class="profile-buttons">
-    <% if current_user %>
-      <h4><%= current_user.username %></h4>
-      <%= button_to("Sign Out", session_url, method: :delete) %>
-      <%= button_to("Edit Profile", edit_user_url(current_user), method: :get) %>
-    <% else %>
-      <%= button_to("Sign Up", new_user_url, method: :get) %>
-      <%= button_to("Sign In", new_session_url, method: :get) %>
-    <% end %>
-  </span>
-
+  <div class="content">
+    <%= button_to("Home", root_url, method: :get, class: "button") %>
+    <span class="profile-buttons">
+      <% if current_user %>
+        <h4><%= current_user.username %></h4>
+        <%= button_to("Sign Out", session_url, method: :delete, class: "button") %>
+        <%= button_to("Edit Profile", edit_user_url(current_user), method: :get, class: "button") %>
+      <% else %>
+        <%= button_to("Sign Up", new_user_url, method: :get, class: "button") %>
+        <%= button_to("Sign In", new_session_url, method: :get, class: "button") %>
+      <% end %>
+    </span>
   <%= yield %>
 </div>
 

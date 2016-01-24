@@ -14,6 +14,30 @@
  *= require_self
  */
 
+.user-auth {
+  width: 300px;
+  margin: auto;
+  margin-top: 200px;
+
+  .input {
+    float: right;
+    height: 28px;
+    width: 120px;
+    font-size: 20px;
+  }
+  .switch {
+    float: right;
+  }
+}
+
+.button {
+  font-size: 20px;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 3px;
+  background-color: white;
+}
+
 .profile-buttons {
   float: right;
 
@@ -28,4 +52,9 @@ input {
 .content {
    width: 900px;
    margin: auto;
+}
+
+.delete {
+  font-size: 12px;
+  vertical-align: middle;
 }

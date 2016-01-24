@@ -1,5 +1,8 @@
-<h1>Edit Profile</h1>
-<form class="input-group" action=<%= user_url(@user) %> method="post">
+<form class="user-auth" action=<%= user_url(@user) %> method="post">
+  <h1>
+    Edit Profile - 
+    <%= link_to "Delete Account", user_url(@user), 'data-method' => :delete, 'data-confirm' => "Are you sure?", class: "delete"%>
+  </h1>
   <% if flash[:errors] %>
     <p class="errors">
       <% flash[:errors].each do |error| %>
@@ -13,17 +16,15 @@
   <h3>
     <label for="display_name">
       Display Name:
-      <input class="form-control" type="text" name=user[display_name] value="<%= @user.display_name %>" id="display_name">
+      <input class="input" type="text" name=user[display_name] value="<%= @user.display_name %>" id="display_name">
     </label>
   </h3>
   <h3>
     <label for="color">
       Marker color:
-      <input class="form-control" type="color" name=user[color] value="<%= @user.color %>" id="color">
+      <input class="input" type="color" name=user[color] value="<%= @user.color %>" id="color">
     </label>
   </h3>
-  <input class="form-control" type="submit" name="name" value="Submit Changes">
+  <input class="button" type="submit" name="name" value="Submit Changes">
   <%= link_to "cancel", list_index_url %>
-  <br>
 </form>
-<%= button_to "Delete Account", user_url(@user), method: :delete %>

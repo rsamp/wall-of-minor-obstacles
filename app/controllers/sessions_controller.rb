@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       redirect_to list_index_url
     else
       flash.now[:errors] = ["Username/Password combination is incorrect"]
-      redirect_to new_session_url
+      render :new
     end
   end
 
