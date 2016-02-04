@@ -51,10 +51,16 @@ class UsersController < ApplicationController
     redirect_to list_index_url
   end
 
+  def toggle_done
+    @user = User.find(params[:user_id])
+    @user.update(done: !@user.done)
+    redirect_to list_index_url
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:username, :display_name, :password, :password_confirmation, :color)
+    params.require(:user).permit(:username, :display_name, :password, :password_confirmation, :color, :done)
   end
 
 end

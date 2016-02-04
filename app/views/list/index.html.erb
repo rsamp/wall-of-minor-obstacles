@@ -4,7 +4,9 @@
 <% User.ordered_list.each do |user| %>
   <h2 class="list-item" style="color:<%= user.color %>;">
     &lt;li&gt;
-    <span class="name"><%= user.display_name == "" || !user.display_name ? user.username : user.display_name %>:</span>
+    <span class="name"
+          style="text-decoration: <%= user.done ? 'line-through' : 'none' %>">
+      <%= user.display_name == "" || !user.display_name ? user.username : user.display_name %></span>
     <% count = user.rejections %>
     <% if count == 0 %>
       0
@@ -27,6 +29,9 @@
       <%= button_to "+", user_add_r_url(user.id), method: :put, class: "add-remove" %>
     <% end %>
     &lt;/li&gt;
+    <% if user == current_user %>
+      <%= button_to "Done?", user_toggle_done_url(user.id), method: :put, class: "add-remove" %>
+    <% end %>
   </h2>
 <% end %>
 

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: 'list#index'
 
   resources :users do
-    put :add_r, :remove_r
+    put :add_r, :remove_r, :toggle_done
   end
   resources :list, only: [:index]
   resource :session, only: [:new, :create, :destroy]
