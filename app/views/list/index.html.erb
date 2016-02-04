@@ -6,7 +6,7 @@
     &lt;li&gt;
     <span class="name"
           style="text-decoration: <%= user.done ? 'line-through' : 'none' %>">
-      <%= user.display_name == "" || !user.display_name ? user.username : user.display_name %></span>
+      <%= user.display_name == "" || !user.display_name ? user.username : user.display_name %>:</span>
     <% count = user.rejections %>
     <% if count == 0 %>
       0
