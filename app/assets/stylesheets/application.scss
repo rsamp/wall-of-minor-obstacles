@@ -30,6 +30,19 @@
   }
 }
 
+.title {
+  float: left;
+  clear: both;
+}
+
+.total {
+  float: right;
+}
+
+.list-top {
+  clear: both;
+}
+
 .button {
   font-size: 20px;
   cursor: pointer;

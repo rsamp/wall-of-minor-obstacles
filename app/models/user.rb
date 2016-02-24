@@ -35,6 +35,10 @@ class User < ActiveRecord::Base
     self.session_token
   end
 
+  def self.total_r
+    User.all.sum(:rejections)
+  end
+
   private
 
   def ensure_session_token
