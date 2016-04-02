@@ -1,4 +1,12 @@
 <h1 class="title">Wall of Minor Obstacles</h1>
+<h1 class="cohort">
+  Cohort Start Date:
+  <select class="cohort" name="startdate">
+    <% User.all_cohorts.each do |startdate| %>
+      
+    <% end %>
+  </select>
+</h1>
 <h1 class="total">Total: <%=User.total_r%></h1>
 <h2 class="list-top">&lt;ul&gt;</h2>
 <% User.ordered_list.each do |user| %>

@@ -1,3 +1,5 @@
+require 'set'
+
 class UsersController < ApplicationController
 
   def new
@@ -49,6 +51,15 @@ class UsersController < ApplicationController
     @user = User.find(params[:user_id])
     @user.decrement!(:rejections)
     redirect_to list_index_url
+  end
+
+  def all_cohorts
+    @users = User.all()
+    @cohorts = Set.new
+    @users.each do |user|
+      @cohorts.add(user.startdate)
+    end
+    @cohorts
   end
 
   def toggle_done
